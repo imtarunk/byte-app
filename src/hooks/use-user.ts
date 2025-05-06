@@ -15,9 +15,20 @@ export const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    console.log("Session status:", status);
+    console.log("Session data:", session);
+    console.log("Current authentication state:", {
+      isLoading: status === "loading",
+      isAuthenticated: status === "authenticated",
+      isUnauthenticated: status === "unauthenticated",
+      sessionUser: session?.user,
+    });
+
     if (status === "authenticated" && session?.user) {
+      console.log("Setting user from session:", session.user);
       setUser(session.user);
     } else {
+      console.log("Clearing user data, status:", status);
       setUser(null);
     }
   }, [session, status]);

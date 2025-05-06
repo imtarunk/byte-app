@@ -10,14 +10,14 @@ import { Icons } from "../icons";
 export function UserAuthForm() {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+  const callbackUrl = searchParams.get("callbackUrl") || "/home";
 
   const handleGoogleLogin = async () => {
     setIsLoading(true);
     try {
       await signIn("google", { callbackUrl });
     } catch (error) {
-      // Handle error
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -28,7 +28,7 @@ export function UserAuthForm() {
     try {
       await signIn("coinbase", { callbackUrl });
     } catch (error) {
-      // Handle error
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

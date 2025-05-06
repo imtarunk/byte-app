@@ -6,7 +6,12 @@ const nextConfig = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+      },
     ],
+    domains: ["images.pexels.com", "lh3.googleusercontent.com"],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
